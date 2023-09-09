@@ -1,12 +1,11 @@
 import React from 'react';
-import { render, fireEvent } from '@testing-library/react';
-import ShellKitTerminal from '../src/index'; // Adjust the import path accordingly
+import { render, screen } from '@testing-library/react';
+import '@testing-library/jest-dom'; // Import the matchers
+import ShellKitTerminal from '../src/index'; // its src/index.js not src/shellkitterminal.js
 
 test('it renders an input field', () => {
-  const { getByPlaceholderText } = render(<ShellKitTerminal />);
-  const inputField = getByPlaceholderText('Enter a command...');
+  render(<ShellKitTerminal />);
+  const inputField = screen.getByPlaceholderText('Enter a command...');
 
   expect(inputField).toBeInTheDocument();
 });
-
-// Add more test cases as you develop your library
